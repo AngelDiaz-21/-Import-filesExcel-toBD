@@ -26,10 +26,11 @@
         </div>
         <!-- specialities table -->
         <table class="table align-items-center table-flush">
-            <thead class="thead-light">
+            <thead class="thead-light align-items-center">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Clave del estado</th>
+                    <th scope="col">Nombre del estado</th>
                     {{-- <th scope="col">E-mail</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Opciones</th> --}}
@@ -40,22 +41,9 @@
                 @foreach ($states as $state)
                 <tr>
                     <th scope="row">{{ $state->id_state }}</th>
-                    <th scope="row">{{ $state->name }}</th>
-                    {{-- <td>{{ $doctor->email }}</td>
-                    <td>{{ $doctor->dni }}</td> --}}
-                    <td>
-
-                        {{-- <form action="{{ url('/doctors/' .$doctor->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE') --}}
-
-                            {{-- Tenemos que poner el id, como es codigo PHP concatenamos una variable e imprimir el id de cada una de las especialidades de las tablas--}}
-
-                            {{-- <a href="{{ url('/doctors/' .$doctor->id. '/edit') }}" class="btn btn-sm btn-primary">Editar</a>
-                            
-                            <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
-                        </form> --}}
-                    </td>
+                    <th scope="row">{{ $state->c_State }}</th>
+                    <th scope="row">{{ $state->name_State }}</th>
+                    
                 </tr>
                 @endforeach
             </tbody>

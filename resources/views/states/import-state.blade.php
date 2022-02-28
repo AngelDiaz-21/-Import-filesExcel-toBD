@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    <form action="{{url('states/store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('states.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <input type="file" name="import_file" />
