@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\StateController;
+=======
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\CodigoPController;
+use App\Http\Controllers\LocalidadController;
+>>>>>>> 69ac9a3... feat: Importar localidades
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +29,15 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+<<<<<<< HEAD
 Route::resource('states', StateController::class);
+=======
+// Estados
+Route::resource('estado', EstadoController::class);
+
+// Codigos postales
+Route::resource('codigoPostal', CodigoPController::class);
+
+// Localidades
+Route::resource('localidad', LocalidadController::class);
+>>>>>>> 69ac9a3... feat: Importar localidades

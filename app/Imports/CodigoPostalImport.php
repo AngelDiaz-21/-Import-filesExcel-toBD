@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Imports;
+
+use App\Models\CodigoP;
+use Maatwebsite\Excel\Concerns\ToModel;
+
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+
+
+
+class CodigoPostalImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading
+{
+    /**
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
+    */
+    public function model(array $row)
+    {
+        return new CodigoP([
+            //
+            'codigoPostal' => $row['c_cp']
+        ]);
+    }
+
+    // Batch inserts
+    public function batchSize(): int
+    {
+        return 4000;
+    }
+
+    // Chunk reading
+    public function chunkSize(): int
+    {
+        return 4000;
+    }
+}

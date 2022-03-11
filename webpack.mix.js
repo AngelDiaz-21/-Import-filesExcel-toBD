@@ -13,4 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+<<<<<<< HEAD
     .sourceMaps();
+=======
+    .sourceMaps()
+    .setResourceRoot('../');
+>>>>>>> 69ac9a3... feat: Importar localidades

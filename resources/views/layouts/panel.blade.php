@@ -28,8 +28,14 @@
             </button>
             <!-- Brand -->
             <a class="navbar-brand pt-0" href="/">
+<<<<<<< HEAD
                 <img src="{{ asset('img/brand/logo.svg') }}" class="navbar-brand-img" alt="...">
                 <!-- <img src="{{ asset('img/brand/blue.png') }}" class="navbar-brand-img" alt="..."> -->
+=======
+                <!-- TODO: Aqui va ir el codigo-->
+                {{-- <img src="{{ asset('img/brand/logo.svg') }}" class="navbar-brand-img" alt="..."> --}}
+                {{-- <img src="{{ asset('img/brand/blue.png') }}" class="navbar-brand-img" alt="..."> --}}
+>>>>>>> 69ac9a3... feat: Importar localidades
             </a>
             <!-- User -->
             <!-- Se muestra para modo escritorio -->
@@ -150,5 +156,9 @@
     <!-- Argon JS -->
     <script src="{{ asset('js/argon.js?v=1.0.0') }} "></script>
 </body>
+<<<<<<< HEAD
+=======
+{{-- <script src="https://kit.fontawesome.com/80fd6a5411.js "></script> --}}
+>>>>>>> 69ac9a3... feat: Importar localidades
 
 </html>

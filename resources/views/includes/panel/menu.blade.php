@@ -8,6 +8,7 @@
         </a>
     </li>
     <li class="nav-item">
+<<<<<<< HEAD
         <a class="nav-link" href="{{ url('/states') }}">
             <i class="ni ni-planet text-blue"></i> Estados
         </a>
@@ -35,6 +36,30 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/excel-prueba') }}">
             <i class="ni ni-satisfied text-muted"></i> Codigo postal
+=======
+        <a class="nav-link" href="{{ url('/estado') }}"><i class="fas fa-sign"></i>
+            Estados
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/localidad') }}">
+            <i class="fas fa-search-location"></i></i> Localidad
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}">
+            <i class="fas fa-building"></i> Municipios
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}">
+            <i class="fas fa-city"></i>Colonias
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/codigoPostal') }}">
+            <i class="fas fa-mail-bulk"></i> Codigo postal
+>>>>>>> 69ac9a3... feat: Importar localidades
         </a>
     </li>
     <li class="nav-item">
