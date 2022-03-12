@@ -2,42 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\StatesImport;
-use App\Models\State;
 use Illuminate\Http\Request;
+
+use App\Imports\MunicipioImport;
+use App\Models\Municipio;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 
-
-
-class StateController extends Controller
+class MunicipioController extends Controller
 {
-    //
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //Estamos haciendo uso del modelo User que se enecuntra en Models
-        $states = State::all();
-        return view('states.index', compact('states'));
+        $municipios = Municipio::all();
+        return view('municipio.index', compact('municipios'));
     }
 
-    public function create(){
-        return view ('states.import-state');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view ('municipio.import-municipio');
     }
 
-    public function store(Request $request){
-        // Definimos una variable file que va a contener el request y el nombre del input con el que importaremos el archivo
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+
         $file = $request -> file('import_file');
 
-        // Importamos el archivo
-        // El StatesImport es el nombre del archivo donde definimos las columnas
-        // Colocamos la variable en donde se almacena el archivo
-        Excel::import(new StatesImport, $file);
+        Excel::import(new MunicipioImport, $file);
 
-        // Redirigimos al index
-
-        return redirect()->route('states.index')->with('sucess', 'Estados importados exitosamente');
-
+        return redirect()->route('municipio.index')->with('sucess', 'Municipios importados exitosamente');
     }
 
     /**
@@ -84,5 +94,4 @@ class StateController extends Controller
     {
         //
     }
-
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatesTable extends Migration
+class CreateMunicipioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
-            // $table->id();
-            $table->increments('id_state');
+        Schema::create('municipio', function (Blueprint $table) {
 
-            $table->string('c_State');
+            $table->id('id_municipio');
 
-            $table->string('name_State');
-            
+            $table->string('clave_Municipio', 5);
+
+            $table->string('c_Estado', 5);
+
+            $table->string('nombre_Municipio');
+
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists('municipio');
     }
 }

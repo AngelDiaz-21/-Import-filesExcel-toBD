@@ -14,11 +14,7 @@
                         </div>
                     @endif
 
-<<<<<<< HEAD
-                    {{ __('You are logged in!') }}
-=======
                     {{ __('You are logged in! ') }}<i class="fas fa-user"></i> 
->>>>>>> 69ac9a3... feat: Importar localidades
                 </div>
             </div>
         </div>

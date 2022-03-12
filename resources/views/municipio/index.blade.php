@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Médicos</h3>
+                <h3 class="mb-0">Municipios de la república</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('states/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
+                <a href="{{ url('municipio/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
             </div>
         </div>
     </div>
@@ -29,21 +29,19 @@
             <thead class="thead-light align-items-center">
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Clave del municipio</th>
                     <th scope="col">Clave del estado</th>
-                    <th scope="col">Nombre del estado</th>
-                    {{-- <th scope="col">E-mail</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Opciones</th> --}}
+                    <th scope="col">Nombre del municipio</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aqui vamos a iterar. Para cada una de las especialidades (doctors) las vamos a tratar como doctor  -->
-                @foreach ($states as $state)
+                @foreach ($municipios as $municipio)
                 <tr>
-                    <th scope="row">{{ $state->id_state }}</th>
-                    <th scope="row">{{ $state->c_State }}</th>
-                    <th scope="row">{{ $state->name_State }}</th>
-                    
+                    <th scope="row">{{ $municipio->id_municipio }}</th>
+                    <th scope="row">{{ $municipio->clave_Municipio }}</th>
+                    <th scope="row">{{ $municipio->c_Estado }}</th>
+                    <th scope="row">{{ $municipio->nombre_Municipio }}</th>
                 </tr>
                 @endforeach
             </tbody>
