@@ -6,9 +6,11 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-<<<<<<< HEAD
-=======
 
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
@@ -18,4 +20,3 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
 // @import "node_modules/font-awesome/scss/font-awesome.scss";
->>>>>>> 69ac9a3... feat: Importar localidades

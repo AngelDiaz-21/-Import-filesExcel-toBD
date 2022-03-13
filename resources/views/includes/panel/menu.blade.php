@@ -23,7 +23,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">
+        <a class="nav-link" href="{{ url('/colonia') }}">
             <i class="fas fa-city"></i>Colonias
         </a>
     </li>

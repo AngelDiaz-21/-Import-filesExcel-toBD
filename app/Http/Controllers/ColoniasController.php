@@ -4,41 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Estado;
-use App\Imports\EstadoImport;
+use App\Models\Colonias;
+use App\Imports\ColoniaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 
-
-
-class EstadoController extends Controller
+class ColoniasController extends Controller
 {
-    //
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //Estamos haciendo uso del modelo User que se enecuntra en Models
-        $estados = Estado::all();
-        return view('estado.index', compact('estados'));
+        //
+        $colonias = Colonias::all();
+        return view ('colonia.index', compact('colonias'));
     }
 
-    public function create(){
-        return view ('estado.import-estado');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view ('colonia.import-colonia');
     }
 
-    public function store(Request $request){
-        // Definimos una variable file que va a contener el request y el nombre del input con el que importaremos el archivo
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
         $file = $request -> file('import_file');
 
         // Importamos el archivo
         // El StatesImport es el nombre del archivo donde definimos las columnas
         // Colocamos la variable en donde se almacena el archivo
-        Excel::import(new EstadoImport, $file);
+        Excel::import(new ColoniaImport, $file);
 
         // Redirigimos al index
 
-        return redirect()->route('estado.index')->with('sucess', 'Estados importados exitosamente');
-
+        return redirect()->route('colonia.index')->with('sucess', 'Colonias importados exitosamente');
     }
 
     /**
@@ -85,5 +99,4 @@ class EstadoController extends Controller
     {
         //
     }
-
 }

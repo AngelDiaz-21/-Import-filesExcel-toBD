@@ -22,7 +22,7 @@
 
                         <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
 
-                        <button class="btn btn-primary" type="submit">Importar</button>
+                        <button disabled="disabled" class="btn btn-primary" type="submit">Importar</button>
                     </form>
                 </div>
             </div>

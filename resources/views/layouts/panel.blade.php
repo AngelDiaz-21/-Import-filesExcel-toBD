@@ -150,6 +150,10 @@
     <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }} "></script>
     <!-- Argon JS -->
     <script src="{{ asset('js/argon.js?v=1.0.0') }} "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
 </body>
 {{-- <script src="https://kit.fontawesome.com/80fd6a5411.js "></script> --}}
 

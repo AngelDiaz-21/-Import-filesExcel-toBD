@@ -20,9 +20,9 @@
                     <form action="{{route('estado.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                        <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="fileInput"/>
 
-                        <button class="btn btn-primary" type="submit">Importar</button>
+                        <button disabled="disabled" class="btn btn-primary" type="submit">Importar</button>
                     </form>
                 </div>
             </div>

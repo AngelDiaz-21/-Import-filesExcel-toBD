@@ -5,6 +5,7 @@ use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CodigoPController;
 use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\ColoniasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::resource('localidad', LocalidadController::class);
 
 //Municipios
 Route::resource('municipio', MunicipioController::class);
+
+// Colonias
+Route::resource('colonia', ColoniasController::class);

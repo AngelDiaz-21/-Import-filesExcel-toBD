@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Importar datos de códigos postales</div>
+                <div class="card-header">Importar datos de colonias</div>
 
                 <div class="card-body">
                     @if (isset($errors) && $errors->any())
@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    <form action="{{route('codigoPostal.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('colonia.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="fileInput"/>

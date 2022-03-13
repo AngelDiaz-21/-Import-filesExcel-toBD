@@ -6,10 +6,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Códigos postales</h3>
+                <h3 class="mb-0">Colonias de la república</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('codigoPostal/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
+                <a href="{{ url('colonia/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
             </div>
         </div>
     </div>
@@ -29,15 +29,19 @@
             <thead class="thead-light align-items-center">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Código postal</th>
+                    <th scope="col">Clave de la colonia</th>
+                    <th scope="col">Codigo postal</th>
+                    <th scope="col">Nombre del asentamiento</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aqui vamos a iterar. Para cada una de las especialidades (doctors) las vamos a tratar como doctor  -->
-                @foreach ($codigo_P as $codigo)
+                @foreach ($colonias as $colonia)
                 <tr>
-                    <th scope="row">{{ $codigo->id_cp }}</th>
-                    <th scope="row">{{ $codigo->codigoPostal }}</th>
+                    <th scope="row">{{ $colonia->id_colonia }}</th>
+                    <th scope="row">{{ $colonia->clave_Colonia }}</th>
+                    <th scope="row">{{ $colonia->clave_CodigoPostal }}</th>
+                    <th scope="row">{{ $colonia->nombre_Asentamiento }}</th>
                 </tr>
                 @endforeach
             </tbody>
