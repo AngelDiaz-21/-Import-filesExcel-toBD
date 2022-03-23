@@ -33,6 +33,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{ url('/seleccionar-datos') }}">
+            <i class="fas fa-check-circle"></i> Seleccionar datos
+        </a>
+    </li>
+    {{-- <hr> --}}
+    <li class="nav-item">
         <!-- Cuando hagamos clic se va activar un evento para que no se actualice la pagina y accedemos al elemento que tenga un ID determinado para finalmente hacer submit de dicho elemento -->
         <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="ni ni-key-25"></i> Cerrar sesión

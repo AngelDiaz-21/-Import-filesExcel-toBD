@@ -16,4 +16,8 @@ class Municipio extends Model
         'c_Estado',
         'nombre_Municipio'
     ];
+
+    public function estado(){
+        return $this->belongsTo("App\Estado");
+    }
 }

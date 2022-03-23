@@ -1,5 +1,5 @@
-<footer class="footer">
-    <div class="row align-items-center justify-content-xl-between">
+<footer class="footer" style="position: absolute; bottom: 0; width:100%;">
+    <div class="row align-items-center justify-content-xl-between" style="margin-left: 0; margin-right:0;">
         <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
             &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank"> {{ config('app.name') }} </a>
@@ -13,12 +13,6 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link" target="_blank">Acerca de</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                </li> -->
             </ul>
         </div>
     </div>
