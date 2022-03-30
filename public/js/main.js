@@ -62,3 +62,12 @@ document.getElementById('estado_select').addEventListener('change',(e)=>{
         document.getElementById("localidad_select").innerHTML = opciones;
     }).catch(error => console.error(error));
 });
+
+
+// (function () {
+//     'use strict'
+//     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+//     tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+//         new bootstrap.Tooltip(tooltipTriggerEl)
+//     })
+// })()

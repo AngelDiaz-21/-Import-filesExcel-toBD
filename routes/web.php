@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CodigoPController;
+use App\Http\Controllers\ColoniasController;
 use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\MunicipioController;
-use App\Http\Controllers\ColoniasController;
+use App\Http\Controllers\MetodoPagoController;
+use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
 
 /*
@@ -44,6 +46,12 @@ Route::resource('/municipio', MunicipioController::class);
 // Colonias
 Route::resource('colonia', ColoniasController::class);
 
+// Métodos de pago
+Route::resource('metodoPago', MetodoPagoController::class);
+// Regimén Fiscal
+Route::resource('regimeFiscal', RegimenFiscalController::class);
+
+
 //Seleccionar todos los datos
 // Route::resource('seleccionar-datos', SeleccionarDatosController::class);
 Route::get('/seleccionar-datos', [App\Http\Controllers\SeleccionarDatosController::class, 'index']);
@@ -52,3 +60,4 @@ Route::get('/seleccionar-datos', [App\Http\Controllers\SeleccionarDatosControlle
 Route::post('/municipios', [App\Http\Controllers\SeleccionarDatosController::class, 'municipios']);
 
 Route::post('/localidades', [App\Http\Controllers\SeleccionarDatosController::class, 'localidades']);
+

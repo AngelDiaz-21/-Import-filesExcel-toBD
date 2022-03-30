@@ -17,6 +17,8 @@
     <link href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('css/argon.css?v=1.0.0') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('css/style.css?v=1.0.1') }}" rel="stylesheet"">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
@@ -90,7 +92,7 @@
 
 
                 <!-- Esta directiva pega un contenido que va a venir desde otra vista-->
-                @include('includes.panel.menu')
+                @include('includes.panel.menu2')
             </div>
         </div>
     </nav>
@@ -164,6 +166,5 @@
     <script src="{{ asset('js/main.js')}}"></script>
     <script src="{{ asset('js/app.js')}}"></script>
 </body>
-{{-- <script src="https://kit.fontawesome.com/80fd6a5411.js "></script> --}}
 
 </html>

@@ -20,7 +20,7 @@
                     <form action="{{route('localidad.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                        <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="fileInput"/>
 
                         <button disabled="disabled" class="btn btn-primary" type="submit">Importar</button>
                     </form>
