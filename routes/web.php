@@ -49,7 +49,7 @@ Route::resource('colonia', ColoniasController::class);
 // Métodos de pago
 Route::resource('metodoPago', MetodoPagoController::class);
 // Regimén Fiscal
-Route::resource('regimeFiscal', RegimenFiscalController::class);
+Route::resource('regimenFiscal', RegimenFiscalController::class);
 
 
 //Seleccionar todos los datos

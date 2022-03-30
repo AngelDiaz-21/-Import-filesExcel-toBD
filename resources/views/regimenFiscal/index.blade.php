@@ -9,7 +9,7 @@
                 <h3 class="mb-0">Regimén fiscal</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('metodoPago/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
+                <a href="{{ url('regimenFiscal/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
             </div>
         </div>
     </div>
@@ -37,13 +37,15 @@
             </thead>
             <tbody>
                 <!-- Aqui vamos a iterar. Para cada una de las especialidades (doctors) las vamos a tratar como doctor  -->
-                {{-- @foreach ($metodosPagos as $metodoPago)
+                @foreach ($regimenFiscal as $regimenF)
                 <tr>
-                    <th scope="row">{{ $metodoPago->id_metodoPago }}</th>
-                    <th scope="row">{{ $metodoPago->clave_metodoPago }}</th>
-                    <th scope="row">{{ $metodoPago->descripcion }}</th>
+                    <th scope="row">{{ $regimenF->id_regimenFiscal }}</th>
+                    <th scope="row">{{ $regimenF->clave_regimenFiscal }}</th>
+                    <th scope="row">{{ $regimenF->descripcion }}</th>
+                    <th scope="row">{{ $regimenF->tipo_personaFisica }}</th>
+                    <th scope="row">{{ $regimenF->tipo_personaMoral }}</th>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

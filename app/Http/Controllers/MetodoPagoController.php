@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MetodoPago;
 
-use App\Http\Requests;
+// use App\Http\Requests;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Imports\MetodoPagoImport;

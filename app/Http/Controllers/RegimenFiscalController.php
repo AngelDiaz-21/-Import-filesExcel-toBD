@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 // use App
 
+use App\Models\RegimenFiscal;
 use Illuminate\Http\Request;
+
+use Yajra\DataTables\DataTables;
+use App\Imports\RegimenFiscalImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Events\NewImportMetodoPagoEvent;
 
 class RegimenFiscalController extends Controller
 {
@@ -16,7 +22,8 @@ class RegimenFiscalController extends Controller
     public function index()
     {
         //
-        return view('regimeFiscal.index');
+        $regimenFiscal = RegimenFiscal::all();
+        return view('regimenFiscal.index', compact('regimenFiscal'));
     }
 
     /**
@@ -27,6 +34,7 @@ class RegimenFiscalController extends Controller
     public function create()
     {
         //
+        return view('regimenFiscal.import-regimenFiscal');
     }
 
     /**
@@ -38,6 +46,11 @@ class RegimenFiscalController extends Controller
     public function store(Request $request)
     {
         //
+        $file = $request -> file('import_file');
+
+        Excel::import(new RegimenFiscalImport, $file);
+
+        return redirect()->route('regimenFiscal.index')->with('sucess', 'Datosd de regimén fiscal importados exitosamente');
     }
 
     /**
