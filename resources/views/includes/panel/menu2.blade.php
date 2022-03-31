@@ -16,7 +16,7 @@
                     <li><a href="{{ url('/seleccionar-datos') }}" class="link-dark rounded">Seleccionar datos</a></li>
                     <hr class="p-0 my-2">
                     <li><a href="{{ url('/metodoPago') }}" class="link-dark rounded">Métodos de pago</a></li>
-                    <li><a href="{{ url('#') }}" class="link-dark rounded">Forma de pago</a></li>
+                    <li><a href="{{ url('/formaPago') }}" class="link-dark rounded">Formas de pago</a></li>
                     <li><a href="{{ url('/regimenFiscal') }}" class="link-dark rounded">Regimén fiscal</a></li>
                     <li><a href="{{ url('#') }}" class="link-dark rounded">Uso CFDI</a></li>
                     <li><a href="{{ url('#') }}" class="link-dark rounded">Claves de productos y servicios</a></li>

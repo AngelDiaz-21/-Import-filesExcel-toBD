@@ -8,11 +8,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 
 // Importamos la clase WithHeadingRow para poder importar mediante los nombres de cabecera del excel
 
-class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
 {
     /**
     * @param array $row

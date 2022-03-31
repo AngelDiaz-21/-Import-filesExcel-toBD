@@ -9,8 +9,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
-class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
 {
     /**
     * @param array $row
@@ -42,8 +43,6 @@ class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
     public function rules(): array
     {
         return [
-            // Above is alias for as it always validates in batches
-            // '*.email' => Rule::in(['patrick@maatwebsite.nl']),
             '*.c_metodopago' => [
                 'string',
                 'required'

@@ -9,8 +9,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
-class ColoniaImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class ColoniaImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
 {
     /**
     * @param array $row
@@ -49,7 +50,7 @@ class ColoniaImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
                 'required'
             ],
             '*.c_codigopostal' => [
-                'string',
+                // 'integer',
                 'required'
             ],
             '*.nombre_asentamiento' => [

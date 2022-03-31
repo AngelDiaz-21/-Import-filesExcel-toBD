@@ -6,6 +6,7 @@ use App\Http\Controllers\CodigoPController;
 use App\Http\Controllers\ColoniasController;
 use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\FormasPagoController;
 use App\Http\Controllers\MetodoPagoController;
 use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
@@ -48,8 +49,13 @@ Route::resource('colonia', ColoniasController::class);
 
 // Métodos de pago
 Route::resource('metodoPago', MetodoPagoController::class);
+
 // Regimén Fiscal
 Route::resource('regimenFiscal', RegimenFiscalController::class);
+
+// Formas de pago
+Route::resource('formaPago', FormasPagoController::class);
+
 
 
 //Seleccionar todos los datos

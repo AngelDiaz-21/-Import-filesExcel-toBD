@@ -8,10 +8,11 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 
-
-class CodigoPostalImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading
+class CodigoPostalImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithCalculatedFormulas
 {
     /**
     * @param array $row
@@ -37,4 +38,15 @@ class CodigoPostalImport implements ToModel, WithHeadingRow, WithBatchInserts, W
     {
         return 4000;
     }
+
+    public function rules(): array
+    {
+        return[
+            '.c_cp' => [
+                'string',
+                'required'
+            ],
+        ];
+    }
+
 }
