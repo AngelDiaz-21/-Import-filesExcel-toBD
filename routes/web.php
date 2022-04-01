@@ -11,6 +11,7 @@ use App\Http\Controllers\FormasPagoController;
 use App\Http\Controllers\MetodoPagoController;
 use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
+use App\Http\Controllers\Clave_ProductoServiciosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,9 @@ Route::resource('formaPago', FormasPagoController::class);
 
 // Uso CFDI
 Route::resource('usoCFDI', UsoCFDIController::class);
+
+// Claves de productos y servicios
+Route::resource('claves_productosServicios', Clave_ProductoServiciosController::class);
 
 
 
