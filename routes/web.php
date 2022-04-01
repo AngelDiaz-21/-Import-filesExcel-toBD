@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CodigoPController;
+use App\Http\Controllers\UsoCFDIController;
 use App\Http\Controllers\ColoniasController;
 use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\MunicipioController;
@@ -55,6 +56,9 @@ Route::resource('regimenFiscal', RegimenFiscalController::class);
 
 // Formas de pago
 Route::resource('formaPago', FormasPagoController::class);
+
+// Uso CFDI
+Route::resource('usoCFDI', UsoCFDIController::class);
 
 
 

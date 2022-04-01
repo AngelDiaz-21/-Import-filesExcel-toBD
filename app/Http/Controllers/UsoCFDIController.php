@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-// use App
-
-use App\Models\RegimenFiscal;
+use App\Models\UsoCFDI;
 use Illuminate\Http\Request;
 
+use App\Imports\UsoCFDIImport;
 use Yajra\DataTables\DataTables;
-use App\Imports\RegimenFiscalImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Events\NewImportMetodoPagoEvent;
 
-class RegimenFiscalController extends Controller
+class UsoCFDIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +20,8 @@ class RegimenFiscalController extends Controller
     public function index()
     {
         //
-        $regimenFiscal = RegimenFiscal::all();
-        return view('regimenFiscal.index', compact('regimenFiscal'));
+        $usoCFDI = UsoCFDI::all();
+        return view('usoCFDI.index', compact('usoCFDI'));
     }
 
     /**
@@ -34,7 +32,7 @@ class RegimenFiscalController extends Controller
     public function create()
     {
         //
-        return view('regimenFiscal.import-regimenFiscal');
+        return view('usoCFDI.import-usoCFDI');
     }
 
     /**
@@ -48,9 +46,9 @@ class RegimenFiscalController extends Controller
         //
         $file = $request -> file('import_file');
 
-        Excel::import(new RegimenFiscalImport, $file);
+        Excel::import(new UsoCFDIImport, $file);
 
-        return redirect()->route('regimenFiscal.index')->with('sucess', 'Datos de regimén fiscal importados exitosamente');
+        return redirect()->route('usoCFDI.index')->with('sucess', 'Datos de CFDI importados exitosamente');
     }
 
     /**

@@ -18,7 +18,7 @@
                     <li><a href="{{ url('/metodoPago') }}" class="link-dark rounded">Métodos de pago</a></li>
                     <li><a href="{{ url('/formaPago') }}" class="link-dark rounded">Formas de pago</a></li>
                     <li><a href="{{ url('/regimenFiscal') }}" class="link-dark rounded">Regimén fiscal</a></li>
-                    <li><a href="{{ url('#') }}" class="link-dark rounded">Uso CFDI</a></li>
+                    <li><a href="{{ url('/usoCFDI') }}" class="link-dark rounded">Uso CFDI</a></li>
                     <li><a href="{{ url('#') }}" class="link-dark rounded">Claves de productos y servicios</a></li>
                     <li><a href="{{ url('#') }}" class="link-dark rounded">Clave de unidad</a></li>
                 </ul>
