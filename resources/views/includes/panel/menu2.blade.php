@@ -20,7 +20,7 @@
                     <li><a href="{{ url('/regimenFiscal') }}" class="link-dark rounded">Regimén fiscal</a></li>
                     <li><a href="{{ url('/usoCFDI') }}" class="link-dark rounded">Uso CFDI</a></li>
                     <li><a href="{{ url('claves_productosServicios') }}" class="link-dark rounded">Claves de productos y servicios</a></li>
-                    <li><a href="{{ url('#') }}" class="link-dark rounded">Clave de unidad</a></li>
+                    <li><a href="{{ url('/clavesUnidad') }}" class="link-dark rounded">Clave de unidad</a></li>
                 </ul>
             </div>
         </li>

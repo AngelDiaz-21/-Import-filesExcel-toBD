@@ -9,6 +9,7 @@ use App\Http\Controllers\LocalidadController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\FormasPagoController;
 use App\Http\Controllers\MetodoPagoController;
+use App\Http\Controllers\ClaveUnidadController;
 use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
 use App\Http\Controllers\Clave_ProductoServiciosController;
@@ -63,6 +64,9 @@ Route::resource('usoCFDI', UsoCFDIController::class);
 
 // Claves de productos y servicios
 Route::resource('claves_productosServicios', Clave_ProductoServiciosController::class);
+
+// Claves de unidad
+Route::resource('clavesUnidad', ClaveUnidadController::class);
 
 
 
