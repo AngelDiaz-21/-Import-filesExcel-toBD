@@ -10,6 +10,7 @@ use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\FormasPagoController;
 use App\Http\Controllers\MetodoPagoController;
 use App\Http\Controllers\ClaveUnidadController;
+use App\Http\Controllers\NuevoBoletinController;
 use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
 use App\Http\Controllers\Clave_ProductoServiciosController;
@@ -67,6 +68,12 @@ Route::resource('claves_productosServicios', Clave_ProductoServiciosController::
 
 // Claves de unidad
 Route::resource('clavesUnidad', ClaveUnidadController::class);
+
+// Ejemplo de eventos y listener
+Route::get('/evento-listener', [NuevoBoletinController::class, 'index']);
+Route::post('/subscribe', [NuevoBoletinController::class, 'subscribe']);
+
+
 
 
 

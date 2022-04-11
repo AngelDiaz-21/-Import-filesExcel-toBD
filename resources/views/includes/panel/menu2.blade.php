@@ -2,6 +2,22 @@
     <h6 class="navbar-heading text-muted">Gestionar datos</h6>
     
     <ul class="list-unstyled">
+        <li class="nav-item">
+            <a href="/home" class="nav-link active text-dark" aria-current="page">
+                {{-- <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg> --}}
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ url('/evento-listener') }}" class="nav-link active text-dark" aria-current="page">
+                {{-- <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg> --}}
+                Prueba eventos
+            </a>
+        </li>
         <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#importarDatos-collapse" aria-expanded="true">
                 Importar datos

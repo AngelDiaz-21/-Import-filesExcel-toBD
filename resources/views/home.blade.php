@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in! ') }}<i class="fas fa-user"></i> 
+                    {{ __('You are logged in, hola! ') }}<i class="fas fa-user"></i> 
                 </div>
             </div>
         </div>

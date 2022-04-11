@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\UsuarioSubscritoEvent;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
-use App\Events\NewImportMetodoPagoEvent;
-use App\Listeners\NewImportMetodoPagoListener;
+use App\Listeners\EmailUsuaurioSubscritoListener;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -22,11 +22,11 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         // Importamos primero el evento
-        NewImportMetodoPagoEvent::class => [
+        UsuarioSubscritoEvent::class =>[
             // Despues colocamos el listener
-            NewImportMetodoPagoListener::class,
-
+            EmailUsuaurioSubscritoListener::class
         ]
+
     ];
 
     /**
