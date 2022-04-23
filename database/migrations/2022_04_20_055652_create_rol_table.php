@@ -4,10 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMetodopagoTable extends Migration
+class CreateRolTable extends Migration
 {
-
-    protected $connection = 'claves_sat';
+    // protected $connection = 'facturacion';
     /**
      * Run the migrations.
      *
@@ -15,10 +14,9 @@ class CreateMetodopagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('metodopago', function (Blueprint $table) {
-            $table->id('id_metodoPago');
-            $table->string('clave_metodoPago', 5);
-            $table->string('descripcion', 50);
+        Schema::create('rol', function (Blueprint $table) {
+            $table->id('id_rol');
+            $table->string('nombre_rol');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateMetodopagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metodopago');
+        Schema::dropIfExists('rol');
     }
 }

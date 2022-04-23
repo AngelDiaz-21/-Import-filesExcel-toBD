@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsoCFDI extends Model
 {
+    protected $connection = 'claves_sat';
+    use HasFactory;
+
     public $table = "cfdi";
 
-    use HasFactory;
+
 
     protected $fillable = [
         'clave_usoCFDI',

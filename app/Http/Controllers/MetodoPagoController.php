@@ -13,6 +13,10 @@ use App\Events\NewImportMetodoPagoEvent;
 
 class MetodoPagoController extends Controller
 {
+    public function __construct(){
+        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

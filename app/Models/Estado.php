@@ -10,9 +10,12 @@ use App\Models\Localidad;
 
 class Estado extends Model
 {
-    public $table = "estado";
-
     use HasFactory;
+
+    protected $connection = 'claves_sat';
+    public $table = "estado";
+    // protected $table = "estado";
+
 
     protected $fillable = [
         'clave_Estado',

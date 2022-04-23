@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCodigoPSTable extends Migration
+class CreateCodigoPostalTable extends Migration
 {
+    protected $connection = 'claves_sat';
     /**
      * Run the migrations.
      *
@@ -13,16 +14,9 @@ class CreateCodigoPSTable extends Migration
      */
     public function up()
     {
-        // Arreglar aqui, revisar como pasar el id a varchar
-        Schema::create('codigo_p_s', function (Blueprint $table) {
-            // $table->id();
-            // $table->unsignedBigInteger('id_codigoP')->unsigned();
-            // $table->primary('id_codigoP');
-
+        Schema::create('codigo_postal', function (Blueprint $table) {
             $table->increments('id_cp');
-            
             $table->string('codigoPostal', 10);
-            
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateCodigoPSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codigo_p_s');
+        Schema::dropIfExists('codigo_postal');
     }
 }

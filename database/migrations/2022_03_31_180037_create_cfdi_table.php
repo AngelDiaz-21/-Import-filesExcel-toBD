@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCfdiTable extends Migration
 {
+
+    protected $connection = 'claves_sat';
     /**
      * Run the migrations.
      *

@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Municipio extends Model
 {
+    protected $connection = 'claves_sat';
+    use HasFactory;
+
     public $table = "municipio";
 
-    use HasFactory;
+
 
     protected $fillable = [
         'clave_Municipio',

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFormasPagoTable extends Migration
 {
+
+    protected $connection = 'claves_sat';
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreateFormasPagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('formasPago', function (Blueprint $table) {
+        Schema::connection('claves_sat')->create('formasPago', function (Blueprint $table) {
             $table->id('id_formaPago');
             $table->string('clave_formaPago', 5);
             $table->string('descripcion', 45);

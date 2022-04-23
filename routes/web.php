@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Estado;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CodigoPController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\NuevoBoletinController;
 use App\Http\Controllers\RegimenFiscalController;
 use App\Http\Controllers\SeleccionarDatosController;
 use App\Http\Controllers\Clave_ProductoServiciosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Estados
 Route::resource('estado', EstadoController::class);
+// Route::get('/estado', function () {
+//     dd(Estado::get());
+// });
 
 // Codigos postales
 Route::resource('codigoPostal', CodigoPController::class);

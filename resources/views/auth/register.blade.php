@@ -10,13 +10,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        
+{{-- * Nombre --}}
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre (s)') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -24,7 +23,33 @@
                                 @enderror
                             </div>
                         </div>
+{{-- * Apellido paterno --}}
+                        <div class="row mb-3">
+                            <label for="apellido_pat" class="col-md-4 col-form-label text-md-end">{{ __('Apellido paterno') }}</label>
+                            <div class="col-md-6">
+                                <input id="apellido_pat" type="text" class="form-control @error('apellido_pat') is-invalid @enderror" name="apellido_pat" value="{{ old('apellido_pat') }}" required autocomplete="apellido_pat" autofocus>
 
+                                @error('apellido_pat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+{{-- * Apellido materno --}}
+                        <div class="row mb-3">
+                            <label for="apellido_mat" class="col-md-4 col-form-label text-md-end">{{ __('Apellido materno') }}</label>
+                            <div class="col-md-6">
+                                <input id="apellido_mat" type="text" class="form-control @error('apellido_mat') is-invalid @enderror" name="apellido_mat" value="{{ old('apellido_mat') }}" required autocomplete="apellido_mat" autofocus>
+
+                                @error('apellido_mat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+{{-- * Correo --}}
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -38,7 +63,7 @@
                                 @enderror
                             </div>
                         </div>
-
+{{-- *  --}}
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -52,7 +77,7 @@
                                 @enderror
                             </div>
                         </div>
-
+{{--  * --}}
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 

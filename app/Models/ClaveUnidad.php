@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClaveUnidad extends Model
 {
+    use HasFactory;
+
+    protected $connection = 'claves_sat';
     public $table = "claveUnidad";
 
-    use HasFactory;
 
     protected $fillable = [
         'clave_Unidad',

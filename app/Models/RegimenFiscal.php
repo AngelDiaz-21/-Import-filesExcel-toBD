@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class RegimenFiscal extends Model
 {
+    protected $connection = 'claves_sat';
+    use HasFactory;
+
     public $table = "regimenFiscal";
 
-    use HasFactory;
+
 
     protected $fillable = [
         'clave_regimenFiscal',

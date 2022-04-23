@@ -10,14 +10,14 @@ use Illuminate\Notifications\Notifiable;
 
 class MetodoPago extends Model
 {
-    public $table = "metodopago";
-
-    // public $importar;
-    // public $file;
-
+    // Utilizamos la conexión para utilizar otra base de datos
+    protected $connection = 'claves_sat';
+    
     use HasFactory;
     // Implementamos Notifiable
     use Notifiable;
+    public $table = "metodopago";
+
 
     protected $fillable = [
         'clave_metodoPago',

@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Claves_ProductoServicios extends Model
 {
+    use HasFactory;
+
+    protected $connection = 'claves_sat';
     public $table = "clave_productoservicio";
 
-    use HasFactory;
 
     protected $fillable = [
         'clave_productoServicio',

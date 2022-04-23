@@ -34,7 +34,7 @@ class Claves_ProductoServiciosImport implements ToModel, WithHeadingRow, WithBat
     // Batch inserts
     public function batchSize(): int
     {
-        return 10500;
+        return 10300;
     }
 
     // Chunk reading

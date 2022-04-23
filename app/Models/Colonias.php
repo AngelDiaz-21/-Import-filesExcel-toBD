@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Colonias extends Model
 {
+    use HasFactory;
+
+    protected $connection = 'claves_sat';
     public $table = "colonia";
 
-    use HasFactory;
+
 
     protected $fillable = [
         'clave_Colonia',
