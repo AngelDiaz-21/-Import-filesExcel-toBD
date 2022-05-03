@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Estado;
-use App\Models\Municipio;
+
+use App\Models\Colonias;
 use App\Models\Localidad;
+use App\Models\Municipio;
+use Illuminate\Http\Request;
 
 
 class SeleccionarDatosController extends Controller
@@ -49,20 +50,39 @@ class SeleccionarDatosController extends Controller
             return response()->json(
                 // Recibe un array y tenemos que parsearlo o armarlo
                 [
-                // Enviamos una bandera si esta todo bien
+                // Enviamos una bandera si esta todo mal
                 'success' => false
                 ]
             );
         }
     }
 
-    public function localidades(Request $request){
+    public function localidad(Request $request){
         if(isset($request->texto)){
             // $localidades = Localidad::wherec_Estado($request->texto)->get();
             $localidades = Localidad::where('c_Estado', $request->texto)->get();
             return response()->json(
                 [
                 'lista' => $localidades,
+                'success' => true
+                ]
+            );
+        }else{
+            return response()->json(
+                [
+                'success' => false
+                ]
+            );
+        }
+    }
+
+    public function colonias(Request $request){
+        if(isset($request->texto)){
+            // $localidades = Localidad::wherec_Estado($request->texto)->get();
+            $colonias = Colonias::where('clave_CodigoPostal', $request->texto)->get();
+            return response()->json(
+                [
+                'lista' => $colonias,
                 'success' => true
                 ]
             );
