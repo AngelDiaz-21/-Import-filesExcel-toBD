@@ -1,5 +1,5 @@
 <!-- Heading -->
-<h6 class="navbar-heading text-muted">Gestionar datos</h6>
+<h6 class="navbar-heading text-muted">Importar datos</h6>
 <!-- Navigation (menu lateral izquierdo)-->
 <ul class="navbar-nav">
     <li class="nav-item">
@@ -7,63 +7,64 @@
             <i class="ni ni-tv-2 text-red"></i> Dashboard
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/estado') }}"><i class="fas fa-sign"></i>
-            Estados
+    <li class="nav-item {{ (Request::url() == route('estados')) || (request()->is('estados/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('estados') }}">
+            <i class="fas fa-sign"></i> Estados
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/localidad') }}">
-            <i class="fas fa-search-location"></i></i> Localidad
+    <li class="nav-item {{ (Request::url() == route('localidades')) || (request()->is('localidades/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('localidades') }}">
+            <i class="fas fa-search-location"></i></i> Localidades
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/municipio') }}">
+    <li class="nav-item {{ (Request::url() == route('municipios')) || (request()->is('municipios/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('municipios') }}">
             <i class="fas fa-building"></i> Municipios
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/colonia') }}">
+    <li class="nav-item {{ (Request::url() == route('colonias')) || (request()->is('colonias/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('colonias') }}">
             <i class="fas fa-city"></i>Colonias
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/codigoPostal') }}">
-            <i class="fas fa-mail-bulk"></i> Codigo postal
+    <li class="nav-item {{ (Request::url() == route('codigosPostales')) || (request()->is('codigosPostales/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('codigosPostales') }}">
+            <i class="fas fa-mail-bulk"></i> Codigos postales
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ (Request::url() == route('metodosPago')) || (request()->is('metodosPago/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('metodosPago') }}">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Métodos de pago
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::url() == route('formasPago')) || (request()->is('formasPago/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('formasPago') }}">
+            <i class="fa-solid fa-money-bill"></i> Formas de pago
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::url() == route('regimenesFiscales')) || (request()->is('regimenesFiscales/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('regimenesFiscales') }}">
+            <i class="fa-solid fa-r"></i> Regímenes fiscales
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::url() == route('usoCFDI')) || (request()->is('usoCFDI/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('usoCFDI') }}">
+            <i class="fa-solid fa-file-invoice"></i> Uso CFDI
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::url() == route('CPS')) || (request()->is('claves_productosServicios/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('CPS') }}">
+            <i class="fa-brands fa-product-hunt"></i> Claves de productos y servicios
+        </a>
+    </li>
+    <li class="nav-item {{ (Request::url() == route('clavesUnidad')) || (request()->is('clavesUnidad/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('clavesUnidad') }}">
+            <i class="fa-solid fa-scale-balanced"></i> Claves de unidad
+        </a>
+    </li>
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ url('/seleccionar-datos') }}">
             <i class="fas fa-check-circle"></i> Seleccionar datos
         </a>
-    </li>
-    {{-- <hr> --}}
-    <li class="nav-item">
-        <!-- Cuando hagamos clic se va activar un evento para que no se actualice la pagina y accedemos al elemento que tenga un ID determinado para finalmente hacer submit de dicho elemento -->
-        <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
-            <i class="ni ni-key-25"></i> Cerrar sesión
-        </a>
-        <!-- Para cerrar sesión debemos de hacer una petición tipo POST -->
-        <form action="{{ route('logout') }}" method="POST" style="display: none;" id="formLogout">
-            <!-- Como es una peticion de tipo POST tenemos que incluir un token @csrf -->
-            @csrf
-        </form>
-    </li>
+    </li> --}}
 </ul>
-<!-- Divider -->
-{{-- <hr class="my-3">
-<!-- Heading -->
-<h6 class="navbar-heading text-muted">Reportes</h6>
-<!-- Navigation -->
-<ul class="navbar-nav mb-md-3">
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ni ni-sound-wave text-yellow"></i> Frecuencia de citas
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ni ni-spaceship text-red"></i> Médicos más activos
-        </a>
-    </li>
-</ul> --}}
