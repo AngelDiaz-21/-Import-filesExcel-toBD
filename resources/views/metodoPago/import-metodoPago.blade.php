@@ -1,13 +1,11 @@
 @extends('layouts.panel')
 
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow-card">
                 <div class="card-header">Importar datos de métodos de pago</div>
-
                 <div class="card-body">
                     @if (isset($errors) && $errors->any())
                     <div class="alert alert-danger" role="alert">
@@ -16,13 +14,12 @@
                         @endforeach
                     </div>
                     @endif
-
-                    <form action="{{route('metodoPago.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('metodoPago-store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-
-                        <input type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="fileInput"/>
-
-                        <button disabled="disabled" class="btn btn-primary" type="submit">Importar</button>
+                        <input class="d-block mb-3 form-control" type="file" name="import_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="fileInput"/>
+                        <div class="d-flex justify-content-end">
+                            <button disabled="disabled" class="btn btn-primary" type="submit">Importar</button>
+                        </div>
                     </form>
                 </div>
             </div>
