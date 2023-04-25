@@ -9,42 +9,41 @@
                 <h3 class="mb-0">CFDI</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('usoCFDI/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
+                <a href="{{ route('usoCFDI-create') }}" class="btn btn-sm btn-success pt-2 pb-2">Importar nuevos datos</a>
             </div>
         </div>
     </div>
-    
     <div class="table-responsive">
-        {{-- Para mostrar la notification de agregado correctamente --}}
-        {{-- Decimos que si tenemos una variable de sesion llamada notification vamos a mostrar su valor dentro del alert   --}}
         <div class="card-body">
-            @if (session('notification'))
-            <div class="alert alert-success" role="alert">
-                {{ session('notification') }}
+            @if (session('sucess'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('sucess') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             @endif
         </div>
-        <!-- specialities table -->
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush text-center">
             <thead class="thead-light align-items-center">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Clave CFDI</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Tipo de persona fisica</th>
-                    <th scope="col">Tipo de persona moral</th>
-                    <th scope="col">Regimén fiscal receptor</th>
+                <tr class="d-flex">
+                    <th class="col-1" scope="col">ID</th>
+                    <th class="col-2 break-word" scope="col">Clave CFDI</th>
+                    <th class="col-3" scope="col">Descripción</th>
+                    <th class="col-2 break-word" scope="col">Tipo de persona fisica</th>
+                    <th class="col-2 break-word" scope="col">Tipo de persona moral</th>
+                    <th class="col-2 break-word" scope="col">Regimén fiscal receptor</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($usoCFDI as $CFDI)
-                <tr>
-                    <th scope="row">{{ $CFDI->id_usoCFDI }}</th>
-                    <th scope="row">{{ $CFDI->clave_usoCFDI }}</th>
-                    <th scope="row">{{ $CFDI->descripcion }}</th>
-                    <th scope="row">{{ $CFDI->tipo_personaFisica }}</th>
-                    <th scope="row">{{ $CFDI->tipo_personaMoral }}</th>
-                    <th scope="row">{{ $CFDI->regimen_fiscalReceptor }}</th>
+                <tr class="d-flex">
+                    <th class="col-1" scope="row">{{ $CFDI->id_usoCFDI }}</th>
+                    <th class="col-2" scope="row">{{ $CFDI->clave_usoCFDI }}</th>
+                    <th class="col-3 break-word text-justify" scope="row">{{ $CFDI->descripcion }}</th>
+                    <th class="col-2" scope="row">{{ $CFDI->tipo_personaFisica }}</th>
+                    <th class="col-2" scope="row">{{ $CFDI->tipo_personaMoral }}</th>
+                    <th class="col-2 break-word text-justify" scope="row">{{ $CFDI->regimen_fiscalReceptor }}</th>
                 </tr>
                 @endforeach
             </tbody>

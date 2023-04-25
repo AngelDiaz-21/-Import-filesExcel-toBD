@@ -6,44 +6,42 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Regimén fiscal</h3>
+                <h3 class="mb-0">Regímenes fiscales</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('regimenFiscal/create') }}" class="btn btn-sm btn-success">Importar nuevos datos</a>
+                <a href="{{ route('regimenFiscal-create') }}" class="btn btn-sm btn-success pt-2 pb-2">Importar nuevos datos</a>
             </div>
         </div>
     </div>
-    
     <div class="table-responsive">
-        {{-- Para mostrar la notification de agregado correctamente --}}
-        {{-- Decimos que si tenemos una variable de sesion llamada notification vamos a mostrar su valor dentro del alert   --}}
         <div class="card-body">
-            @if (session('notification'))
-            <div class="alert alert-success" role="alert">
-                {{ session('notification') }}
+            @if (session('sucess'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('sucess') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             @endif
         </div>
-        <!-- specialities table -->
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush text-center">
             <thead class="thead-light align-items-center">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Clave regimén fiscal</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Tipo de persona fisica</th>
-                    <th scope="col">Tipo de persona moral</th>
+                <tr class="d-flex">
+                    <th class="col-1" scope="col">ID</th>
+                    <th class="col-2 break-word" scope="col">Clave regimén fiscal</th>
+                    <th class="col-5" scope="col">Descripción</th>
+                    <th class="col-2 break-word" scope="col">Tipo de persona fisica</th>
+                    <th class="col-2 break-word" scope="col">Tipo de persona moral</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Aqui vamos a iterar. Para cada una de las especialidades (doctors) las vamos a tratar como doctor  -->
                 @foreach ($regimenFiscal as $regimenF)
-                <tr>
-                    <th scope="row">{{ $regimenF->id_regimenFiscal }}</th>
-                    <th scope="row">{{ $regimenF->clave_regimenFiscal }}</th>
-                    <th scope="row">{{ $regimenF->descripcion }}</th>
-                    <th scope="row">{{ $regimenF->tipo_personaFisica }}</th>
-                    <th scope="row">{{ $regimenF->tipo_personaMoral }}</th>
+                <tr class="d-flex">
+                    <th class="col-1" scope="row">{{ $regimenF->id_regimenFiscal }}</th>
+                    <th class="col-2" scope="row">{{ $regimenF->clave_regimenFiscal }}</th>
+                    <th class="col-5 break-word text-justify" scope="row">{{ $regimenF->descripcion }}</th>
+                    <th class="col-2" scope="row">{{ $regimenF->tipo_personaFisica }}</th>
+                    <th class="col-2" scope="row">{{ $regimenF->tipo_personaMoral }}</th>
                 </tr>
                 @endforeach
             </tbody>
