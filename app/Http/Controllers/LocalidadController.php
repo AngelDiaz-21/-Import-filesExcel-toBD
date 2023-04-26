@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Imports\LocalidadImport;
 use App\Models\Localidad;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +11,6 @@ use Yajra\DataTables\DataTables;
 class LocalidadController extends Controller
 {
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -22,8 +20,7 @@ class LocalidadController extends Controller
      */
     public function index()
     {
-        //Estamos haciendo uso del modelo User que se enecuntra en Models
-        $localidades = Localidad::all();
+        $localidades = Localidad::paginate(20);
         return view('localidad.index', compact('localidades'));
     }
 
@@ -34,7 +31,7 @@ class LocalidadController extends Controller
      */
     public function create()
     {
-        return view ('localidad.import-localidad');
+        return view('localidad.import-localidad');
     }
 
     /**
@@ -45,13 +42,9 @@ class LocalidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-        $file = $request -> file('import_file');
-
+        $file = $request->file('import_file');
         Excel::import(new LocalidadImport, $file);
-
-        return redirect()->route('localidad.index')->with('sucess', 'Localidades importados exitosamente');
+        return redirect()->route('localidades')->with('sucess', 'Localidades importados exitosamente');
     }
 
     /**

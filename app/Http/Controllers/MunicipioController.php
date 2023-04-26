@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Imports\MunicipioImport;
 use App\Models\Municipio;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +11,6 @@ use Yajra\DataTables\DataTables;
 class MunicipioController extends Controller
 {
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -22,8 +20,7 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        //Estamos haciendo uso del modelo User que se enecuntra en Models
-        $municipios = Municipio::all();
+        $municipios = Municipio::paginate(20);
         return view('municipio.index', compact('municipios'));
     }
 
@@ -34,7 +31,7 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        return view ('municipio.import-municipio');
+        return view('municipio.import-municipio');
     }
 
     /**
@@ -45,13 +42,9 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-        $file = $request -> file('import_file');
-
+        $file = $request->file('import_file');
         Excel::import(new MunicipioImport, $file);
-
-        return redirect()->route('municipio.index')->with('sucess', 'Municipios importados exitosamente');
+        return redirect()->route('municipios')->with('sucess', 'Municipios importados exitosamente');
     }
 
     /**

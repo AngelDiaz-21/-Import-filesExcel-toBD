@@ -3,46 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Estado;
 use App\Imports\EstadoImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 
-
-
 class EstadoController extends Controller
 {
     //
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
 
     public function index()
     {
-        //Estamos haciendo uso del modelo User que se enecuntra en Models
-        $estados = Estado::all();
+        $estados = Estado::paginate(20);
         return view('estado.index', compact('estados'));
     }
 
     public function create(){
-        return view ('estado.import-estado');
+        return view('estado.import-estado');
     }
 
     public function store(Request $request){
-        // Definimos una variable file que va a contener el request y el nombre del input con el que importaremos el archivo
-        $file = $request -> file('import_file');
+        // $file = $request -> file('import_file');
+        // Excel::import(new EstadoImport, $file);
+        // return redirect()->route('estados')->with('sucess', 'Estados importados exitosamente');
+        try {
+            $file = $request->file('import_file');
+            Excel::import(new EstadoImport, $file);
+            return redirect()->route('estados')->with('sucess', 'Estados importados exitosamente');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
 
-        // Importamos el archivo
-        // El StatesImport es el nombre del archivo donde definimos las columnas
-        // Colocamos la variable en donde se almacena el archivo
-        Excel::import(new EstadoImport, $file);
-
-        // Redirigimos al index
-
-        return redirect()->route('estado.index')->with('sucess', 'Estados importados exitosamente');
-
+            foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }
+        }
     }
 
     /**
@@ -89,5 +89,4 @@ class EstadoController extends Controller
     {
         //
     }
-
 }

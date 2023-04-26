@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Imports\CodigoPostalImport;
 use App\Models\CodigoP;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +11,6 @@ use Yajra\DataTables\DataTables;
 class CodigoPController extends Controller
 {
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -22,10 +20,8 @@ class CodigoPController extends Controller
      */
     public function index()
     {
-        //
-        $codigo_P = CodigoP::all();
-        return view('codigoPostal.index', compact('codigo_P'));
-        // return view('codigoP.index');
+        $codigo_P = CodigoP::paginate(20);
+        return view("codigoPostal.index", compact("codigo_P"));
     }
 
     /**
@@ -35,8 +31,7 @@ class CodigoPController extends Controller
      */
     public function create()
     {
-        //
-        return view ('codigoPostal.import-cp');
+        return view('codigoPostal.import-cp');
     }
 
     /**
@@ -47,18 +42,13 @@ class CodigoPController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request -> file('import_file');
-
+        // Definimos una variable file que va a contener el request y el nombre del input con el que importaremos el archivo
+        $file = $request->file('import_file');
         // Importamos el archivo
         // El StatesImport es el nombre del archivo donde definimos las columnas
         // Colocamos la variable en donde se almacena el archivo
         Excel::import(new CodigoPostalImport, $file);
-
-        // Redirigimos al index
-
-        return redirect()->route('codigoPostal.index')->with('sucess', 'Estados importados exitosamente');
-
+        return redirect()->route('codigosPostales')->with('sucess', 'Códigos postales importados exitosamente');
     }
 
     /**

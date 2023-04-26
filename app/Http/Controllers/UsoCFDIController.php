@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\UsoCFDI;
 use Illuminate\Http\Request;
-
 use App\Imports\UsoCFDIImport;
 use Yajra\DataTables\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Events\NewImportMetodoPagoEvent;
 
 class UsoCFDIController extends Controller
 {
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -23,8 +20,7 @@ class UsoCFDIController extends Controller
      */
     public function index()
     {
-        //
-        $usoCFDI = UsoCFDI::all();
+        $usoCFDI = UsoCFDI::paginate(20);
         return view('usoCFDI.index', compact('usoCFDI'));
     }
 
@@ -35,7 +31,6 @@ class UsoCFDIController extends Controller
      */
     public function create()
     {
-        //
         return view('usoCFDI.import-usoCFDI');
     }
 
@@ -47,12 +42,9 @@ class UsoCFDIController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request -> file('import_file');
-
+        $file = $request->file('import_file');
         Excel::import(new UsoCFDIImport, $file);
-
-        return redirect()->route('usoCFDI.index')->with('sucess', 'Datos de CFDI importados exitosamente');
+        return redirect()->route('usoCFDI')->with('sucess', 'Datos de CFDI importados exitosamente');
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Colonias;
 use App\Imports\ColoniaImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +11,6 @@ use Yajra\DataTables\DataTables;
 class ColoniasController extends Controller
 {
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -22,9 +20,8 @@ class ColoniasController extends Controller
      */
     public function index()
     {
-        //
-        $colonias = Colonias::all();
-        return view ('colonia.index', compact('colonias'));
+        $colonias = Colonias::paginate(20);
+        return view('colonia.index', compact('colonias'));
     }
 
     /**
@@ -34,8 +31,7 @@ class ColoniasController extends Controller
      */
     public function create()
     {
-        //
-        return view ('colonia.import-colonia');
+        return view('colonia.import-colonia');
     }
 
     /**
@@ -46,17 +42,9 @@ class ColoniasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request -> file('import_file');
-
-        // Importamos el archivo
-        // El StatesImport es el nombre del archivo donde definimos las columnas
-        // Colocamos la variable en donde se almacena el archivo
+        $file = $request->file('import_file');
         Excel::import(new ColoniaImport, $file);
-
-        // Redirigimos al index
-
-        return redirect()->route('colonia.index')->with('sucess', 'Colonias importados exitosamente');
+        return redirect()->route('colonias')->with('sucess', 'Colonias importados exitosamente');
     }
 
     /**

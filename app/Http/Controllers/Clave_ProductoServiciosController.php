@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Claves_ProductoServicios;
-
 use App\Imports\Claves_ProductoServiciosImport;
 use Yajra\DataTables\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Events\NewImportMetodoPagoEvent;
 
 class Clave_ProductoServiciosController extends Controller
 {
-
     public function __construct(){
         // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
@@ -25,9 +22,8 @@ class Clave_ProductoServiciosController extends Controller
      */
     public function index()
     {
-        //
-        $clave_prodServ = Claves_ProductoServicios::all();
-        return view('claves_productosServicios.index', compact('clave_prodServ'));
+        $clave_prodServ = Claves_ProductoServicios::paginate(20);
+        return view('clavesProductosServicios.index', compact('clave_prodServ'));
     }
 
     /**
@@ -37,8 +33,7 @@ class Clave_ProductoServiciosController extends Controller
      */
     public function create()
     {
-        //
-        return view('claves_productosServicios.import-claveProductoServicio');
+        return view('clavesProductosServicios.import-claveProductoServicio');
     }
 
     /**
@@ -49,12 +44,9 @@ class Clave_ProductoServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request -> file('import_file');
-
+        $file = $request->file('import_file');
         Excel::import(new Claves_ProductoServiciosImport, $file);
-
-        return redirect()->route('claves_productosServicios.index')->with('sucess', 'Datos de claves productos y servicios importados exitosamente');
+        return redirect()->route('CPS')->with('sucess', 'Datos de claves productos y servicios importados exitosamente');
     }
 
     /**

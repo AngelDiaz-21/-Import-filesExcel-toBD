@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\ClaveUnidad;
 use Illuminate\Http\Request;
 use App\Imports\ClaveUnidadImport;
-
 use Yajra\DataTables\DataTables;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Events\NewImportMetodoPagoEvent;
 
 class ClaveUnidadController extends Controller
 {      
     public function __construct(){
-        // Esto significa que todas las rutas que este controlador resuelva van a exigir al usuario que haya iniciado sesión y si no lo esta lo mando a la vista de login
         $this->middleware('auth');
     }
     /**
@@ -23,8 +20,7 @@ class ClaveUnidadController extends Controller
      */
     public function index()
     {
-        //
-        $clavesUnidad = ClaveUnidad::all();
+        $clavesUnidad = ClaveUnidad::paginate(20);
         return view ('clavesUnidad.index', compact('clavesUnidad'));
     }
 
@@ -35,7 +31,6 @@ class ClaveUnidadController extends Controller
      */
     public function create()
     {
-        //
         return view('clavesUnidad.import-clavesUnidad');
     }
 
@@ -47,12 +42,9 @@ class ClaveUnidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request -> file('import_file');
-
+        $file = $request->file('import_file');
         Excel::import(new ClaveUnidadImport, $file);
-
-        return redirect()->route('clavesUnidad.index')->with('sucess', 'Datos de claves de unidades importados exitosamente');
+        return redirect()->route('clavesUnidad')->with('sucess', 'Datos de claves de unidades importados exitosamente');
     }
 
     /**
