@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\Municipio;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class MunicipioImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class MunicipioImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,12 +22,9 @@ class MunicipioImport implements ToModel, WithHeadingRow, WithBatchInserts, With
     public function model(array $row)
     {
         return new Municipio([
-            //
             'clave_Municipio' => $row['c_municipio'],
             'c_Estado' => $row['c_estado'],
             'nombre_Municipio' => $row['nombre']
-
-
         ]);
     }
 
@@ -60,5 +58,4 @@ class MunicipioImport implements ToModel, WithHeadingRow, WithBatchInserts, With
             ]
         ];
     }
-
 }

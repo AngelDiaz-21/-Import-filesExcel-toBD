@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\ClaveUnidad;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class ClaveUnidadImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class ClaveUnidadImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,7 +22,6 @@ class ClaveUnidadImport implements ToModel, WithHeadingRow, WithBatchInserts, Wi
     public function model(array $row)
     {
         return new ClaveUnidad([
-            //
             'clave_Unidad' => $row['c_claveunidad'],
             'nombreUnidad' => $row['nombre_unidad'],
             'descripcion' => $row['descripcion'],
@@ -47,26 +47,12 @@ class ClaveUnidadImport implements ToModel, WithHeadingRow, WithBatchInserts, Wi
     {
         return [
             '*.c_claveunidad' => [
-                // 'string',
                 'required'
             ],
             '*.nombre_unidad' => [
                 'string',
                 'required'
             ],
-            '*.descripcion' => [
-                // 'string',
-                // 'required'
-            ],
-            '*.nota' => [
-                // 'string',
-                // 'required'
-            ],
-            '*.simbolo' => [
-                // 'string',
-                // 'integer',
-                // 'required'
-            ]
         ];
     }
 }

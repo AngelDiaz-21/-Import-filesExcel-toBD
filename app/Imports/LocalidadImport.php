@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\Localidad;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class LocalidadImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class LocalidadImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,7 +22,6 @@ class LocalidadImport implements ToModel, WithHeadingRow, WithBatchInserts, With
     public function model(array $row)
     {
         return new Localidad([
-            //
             'clave_Localidad' => $row['c_localidad'],
             'c_Estado' => $row['c_estado'],
             'nombre_Localidad' => $row['nombre_localidad']
@@ -56,9 +56,6 @@ class LocalidadImport implements ToModel, WithHeadingRow, WithBatchInserts, With
                 'string',
                 'required'
             ]
-
-
         ];
     }
-
 }

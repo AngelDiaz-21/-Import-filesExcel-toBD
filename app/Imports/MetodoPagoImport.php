@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\MetodoPago;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,7 +22,6 @@ class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
     public function model(array $row)
     {
         return new MetodoPago([
-            //
             'clave_metodoPago' => $row['c_metodopago'],
             'descripcion' => $row['descripcion']
         ]);
@@ -53,6 +53,4 @@ class MetodoPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
             ]
         ];
     }
-
-
 }

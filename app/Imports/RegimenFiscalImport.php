@@ -4,15 +4,15 @@ namespace App\Imports;
 
 use App\Models\RegimenFiscal;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-
-class RegimenFiscalImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class RegimenFiscalImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -22,7 +22,6 @@ class RegimenFiscalImport implements ToModel, WithHeadingRow, WithBatchInserts, 
     public function model(array $row)
     {
         return new RegimenFiscal([
-            //
             'clave_regimenFiscal' => $row['c_regimenfiscal'],
             'descripcion' => $row['descripcion'],
             'tipo_personaFisica' => $row['tipo_personafisica'],
@@ -64,5 +63,4 @@ class RegimenFiscalImport implements ToModel, WithHeadingRow, WithBatchInserts, 
             ]
         ];
     }
-
 }

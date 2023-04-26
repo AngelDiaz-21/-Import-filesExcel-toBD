@@ -9,11 +9,10 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-
-// Importamos la clase WithHeadingRow para poder importar mediante los nombres de cabecera del excel
-
-class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows 
 {
     /**
     * @param array $row
@@ -24,7 +23,6 @@ class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChu
     public function model(array $row)
     {
         return new Estado([
-            //Definimos las columnas que queremos. Parte de la izquierda son las columnas en la BD y de la derecha de excel(deben de ir en miniscula)
             'clave_Estado' => $row['c_estado'],
             'c_Pais' => $row['c_pais'],
             'nombre_Estado' => $row['nombre']
@@ -61,10 +59,6 @@ class EstadoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChu
                 'string',
                 'required'
             ]
-
-
         ];
     }
-
-
 }

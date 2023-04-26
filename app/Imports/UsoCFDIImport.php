@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\UsoCFDI;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class UsoCFDIImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class UsoCFDIImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,7 +22,6 @@ class UsoCFDIImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
     public function model(array $row)
     {
         return new UsoCFDI([
-            //
             'clave_usoCFDI' => $row['c_usocfdi'],
             'descripcion' => $row['descripcion'],
             'tipo_personaFisica' => $row['persona_fisica'],
@@ -63,12 +63,8 @@ class UsoCFDIImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
                 'required'
             ],
             '*.regimen_fiscal_receptor' => [
-                // 'string',
                 'required'
             ]
         ];
     }
-
-
-
 }

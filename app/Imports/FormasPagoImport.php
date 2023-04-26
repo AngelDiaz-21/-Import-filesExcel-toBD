@@ -4,14 +4,15 @@ namespace App\Imports;
 
 use App\Models\FormasPago;
 use Maatwebsite\Excel\Concerns\ToModel;
-
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class FormasPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas
+class FormasPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation, WithCalculatedFormulas, ShouldQueue, SkipsEmptyRows
 {
     /**
     * @param array $row
@@ -21,7 +22,6 @@ class FormasPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
     public function model(array $row)
     {
         return new FormasPago([
-            //
             'clave_formaPago' => $row['c_formapago'],
             'descripcion' => $row['descripcion'],
             'bancarizado' => $row['bancarizado'],
@@ -53,9 +53,7 @@ class FormasPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
     public function rules(): array
     {
         return [
-
             '*.c_formapago' => [
-                // 'integer',
                 'required'
             ],
             '*.descripcion' => [
@@ -104,11 +102,4 @@ class FormasPagoImport implements ToModel, WithHeadingRow, WithBatchInserts, Wit
             ]
         ];
     }
-
-
-
-
-
-
-
 }
