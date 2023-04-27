@@ -62,9 +62,9 @@
             <i class="fa-solid fa-scale-balanced"></i> Claves de unidad
         </a>
     </li>
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ url('/seleccionar-datos') }}">
+    <li class="nav-item {{ (Request::url() == url('seleccionar-datos')) || (request()->is('seleccionar-datos/*')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('seleccionar-datos') }}">
             <i class="fas fa-check-circle"></i> Seleccionar datos
         </a>
-    </li> --}}
+    </li>
 </ul>
