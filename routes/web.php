@@ -94,13 +94,6 @@ Route::get('clavesUnidad', [ClaveUnidadController::class, 'index'])->name('clave
 Route::get('clavesUnidad/create', [ClaveUnidadController::class, 'create'])->name('claveUnidad-create');
 Route::post('claveUnidad', [ClaveUnidadController::class, 'store'])->name('claveUnidad-store');
 
-// Ejemplo de eventos y listener
-Route::get('/evento-listener', [NuevoBoletinController::class, 'index']);
-Route::post('/subscribe', [NuevoBoletinController::class, 'subscribe']);
-
-
-
-
 
 //Seleccionar todos los datos
 // Route::resource('seleccionar-datos', SeleccionarDatosController::class);
@@ -117,25 +110,6 @@ Route::post('/localidades', [App\Http\Controllers\SeleccionarDatosController::cl
 Route::post('/colonias', [App\Http\Controllers\SeleccionarDatosController::class, 'colonias']);
 
 
-
-Route::middleware(['auth'])->group(function () {
-
-    // Route::resource('/emisor', EmisorController::class);
-
-    Route::get('/emisor', [EmisorController::class, 'index']);
-
-    Route::get('/emisor/create', [EmisorController::class, 'create']);
-
-    Route::post('/emisor', [EmisorController::class, 'store'])->name('emisor.store');
-
-    Route::get('/emisor/{id_emisor}/edit', [EmisorController::class, 'edit'])->name('emisor.edit');
-
-    Route::put('/emisor/{id_emisor}', [EmisorController::class, 'update'])->name('emisor.update');
-    
-    Route::delete('/emisor/{id_emisor}', [EmisorController::class, 'destroy'])->name('emisor.delete');
-
-    // FETCH
-    Route::post('/emisor/regimenFiscales', [App\Http\Controllers\EmisorController::class, 'regimenFiscales']);
-
-    Route::post('/emisor/{id_emisor}/regimenFiscales', [App\Http\Controllers\EmisorController::class, 'regimenFiscales']);
-});
+// Ejemplo de eventos y listener
+Route::get('/evento-listener', [NuevoBoletinController::class, 'index']);
+Route::post('/subscribe', [NuevoBoletinController::class, 'subscribe']);
