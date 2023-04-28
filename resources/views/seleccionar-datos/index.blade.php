@@ -44,7 +44,7 @@
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="form-group">
                         <label for="codigoPostal">Codigo postal</label>
-                        <input type="text" class="form-control" id="inputCodigoPostal" onkeyup="countCodigoPostal(this);" name="codigoPostal" placeholder="Codigo Postal">
+                        <input type="text" class="form-control" id="inputCodigoPostal" onkeyup="countCodigoPostal(this);" name="codigoPostal" placeholder="Codigo Postal" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
