@@ -73,3 +73,7 @@ table .break-word {
 .shadow-card{
     box-shadow: 10px 5px 20px #000000;
 }
+
+select:disabled{
+    background-color: #cccccc;
+}
