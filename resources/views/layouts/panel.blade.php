@@ -32,31 +32,12 @@
             <!-- Brand -->
             <a class="navbar-brand pt-0" href="/">
                 <!-- TODO: Aqui va ir el codigo-->
-                {{-- <img src="{{ asset('img/brand/logo.svg') }}" class="navbar-brand-img" alt="..."> --}}
-                {{-- <img src="{{ asset('img/brand/blue.png') }}" class="navbar-brand-img" alt="..."> --}}
+                <img src="{{ asset('img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
             </a>
             <!-- User -->
             <!-- Se muestra para modo escritorio -->
             <ul class="nav align-items-center d-md-none">
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ni ni-bell-55"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="media align-items-center">
-                            <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="{{ asset('img/theme/bootstrap.jpg') }}">
-                            </span>
-                        </div>
-                    </a>
                     @include('includes.panel.dropdown_menu')
                 </li>
             </ul>
@@ -78,21 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Form -->
-                <!-- <form class="mt-4 mb-3 d-md-none">
-                    <div class="input-group input-group-rounded input-group-merge">
-                        <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="fa fa-search"></span>
-                            </div>
-                        </div>
-                    </div>
-                </form> -->
-
-
                 <!-- Esta directiva pega un contenido que va a venir desde otra vista-->
-                @include('includes.panel.menu2')
+                @include('includes.panel.menu')
             </div>
         </div>
     </nav>
@@ -102,18 +70,7 @@
         <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/home">Panel de administración</a>
-                <!-- Form -->
-                {{-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                    <div class="form-group mb-0">
-                        <div class="input-group input-group-alternative">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                            </div>
-                            <input class="form-control" placeholder="Search" type="text">
-                        </div>
-                    </div>
-                </form> --}}
+                <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/home">Importar datos</a>
                 <!-- User -->
                 <!-- Se muestra para modo movil -->
                 <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -142,15 +99,9 @@
             @yield('content')
             
         </div>
-
-        
         <!-- Footer -->
         @include('includes.panel.footer')
-        
-        
     </div>
-
-    
     
     <!-- Argon Scripts -->
     <!-- Core -->
@@ -163,8 +114,10 @@
     <script src="{{ asset('js/argon.js?v=1.0.0') }} "></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js')}}"></script>
-    <script src="{{ asset('js/main.js')}}"></script>
     <script src="{{ asset('js/app.js')}}"></script>
 </body>
+
+<script src="{{ asset('js/main.js')}}"></script>
+<script src="{{ asset('js/datosDomicilio.js')}}"></script>
 
 </html>
