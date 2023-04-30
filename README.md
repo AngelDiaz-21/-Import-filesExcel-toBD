@@ -1,3 +1,66 @@
+# Aplicación para importar archivos excel(.xlsx) a una base de datos
+Esta aplicación permite importar archivos de tipo .xlsx a una base de datos (MySQL) y esta enfocada especificamente en importar algunos catologos del SAT, ya que algunos catalogos cuentan con miles registros e insertarlos a través de consultas sql no es lo más optimo. 
+Los catalogos que se pueden importar son los siguientes:
+* Estados
+* Localidades
+* Municipios
+* Colonias
+* Codigos postales
+* Métodos de pagos
+* Formas de pago
+* Regímenes fiscales
+* Uso CFDI
+* Claves de productos y servicios
+* Claves de unidad
+
+Si se desean importar otros catalogos se tiene que crear su respectiva migración, controlador, modelo así como su archivo import.
+
+En los archivos imports, que se encuentran en la ubicación *app/Imports* es donde se realiza toda la funcionalidad para realizar el proceso de importación, para esto se utilizó la librería **Laravel Excel**. Para cada catalogo se creo una clase de importación y se indico con que modelo tiene que trabajar. De esta forma se tiene una conexión a la base de base de datos y por último, en su respectivo controlador se llama a su clase relacionada para importar para que en la función store se guarden los registros.
+
+A continuación, se señalan las interfaces que se utilizaron de la librería **Laravel Excel**:
+* ToModel: Importa cada fila a un modelo Eloquent.
+* WithHeadingRow: Permite importar los datos con los nombres que vienen en la cabecera del excel.
+* WithBatchInserts: Cuando se trabaja con archivos bastantes grandes se recomienda utilizar WithBatchInserts ya que nos pemite reducir drásticamente el número de importaciones, es decir, en vez que realice la importación una sola vez, hará la importación con la cantidad de filas que se definan.
+* WithChunkReading: Ayuda a manejar los archivos bastantes grandes y se recomienda utilizar junto a WithBatchInserts.
+* WithValidation: Permite indicar las reglas que debe de cumplir cada fila.
+* WithCalculatedFormulas: Calcula las fórmulas al importar. Por defecto, esto está desactivado.
+* ShouldQueue: Al usar *WithChunkReading* también se puede optar por ejecutar cada fragmento en un trabajo de cola. 
+* SkipsEmptyRows: Salta filas vacías. Permite omitir las filas vacías, por ejemplo, al usar la regla *required* de validación.
+
+Para ver la documentación de Laravel excel: [https://docs.laravel-excel.com/3.1/getting-started/](https://docs.laravel-excel.com/3.1/getting-started/)
+
+Por último, se creo una sección llamada "Seleccionar datos". Esta vista funciona correctamente una vez que se tiene cargado el catalogo de estados, municipios, localidades, codigos postales y colonias. Está sección se creo con la finalidad de poder entender y aprender utilizar peticiones HTTP asíncronas de JavaScript con Fetch. 
+
+## Vistas de la app
+### Vista home
+Esta es la vista que se muestra al entrar a la aplicación. Del lado izquierdo se tienen las seccciones para importar los catalogos así como cada sección cuenta con una tabla para ver los registros una vez que se han importado.
+
+![Vista de home de la app](https://i.ibb.co/VmDWPyr/home-import-filesexcel.jpg "Vista de home de la app")
+
+### Vista de la sección *Estado*
+A modo de ejemplo se muestra la sección de "Estados", pero el diseño esta planteado igual para todas las demás secciones, es decir, en la página principal de cada sección se tiene una tabla donde se muestran los registros una vez que se han importado. Al momento de dar clic en el botón "Importar nuevos datos" nos redirecciona a otra vista en donde se puede cargar el archivo excel. El botón "Importar" se encuntra desactivado, se activa hasta que el archivo se haya cargado.
+
+![Sección estados - Vista index](https://i.ibb.co/1m9hwrf/estados-import-filesexcel.jpg "Sección estados - Vista index")
+
+![Sección estados - Vista importar registros](https://i.ibb.co/9ySYf8R/estados-cargar-Archivo-import-filesexcel.jpg "Sección estados - Vista importar registros")
+
+### Vista de la sección *Seleccionar datos*
+Como se menciono anteriormente se creo una sección llamada "Seleccionar datos", con la finalidad de poder entender y aprender el funcionamiento de las peticiones HTTP asíncronas con Fetch. Desde el controlador se cargan todos los registros de estados y se envían a la vista, especifícamente al select de estados. Una vez que se selecciona un estado se activan los selects de municipios y localidades, esto de acuerdo al estado seleccionado. Luego, en el input de código postal se ingresa un registro y al momento de que sean los 5 dígitos se quita el foco del input, se hace la búsqueda y en el select de colonias, muestra toda las colonias que tengan ese código postal.
+
+![Sección seleccionar datos](https://i.ibb.co/FsFcGrG/seleccionar-Datos-import-filesexcel.jpg "Sección seleccionar datos")
+
+![Sección seleccionar datos - registros cargados](https://i.ibb.co/Wn2HFhv/seleccionar-Datos-catalogos-import-filesexcel.jpg "Sección seleccionar datos - registros cargados")
+
+## ¿Como usar?
+
+- Clona el repositorio with **git clone**
+- Copia el .env.example a .env y pon las credenciales de su bases de datos.
+- Ejecuta el comando **composer install**
+- Ejecuta el comando **php artisan key:generate**
+- Ejecuta el comando **php artisan migrate:fresh --seed**
+- Credentials user: **angelcortes834@gmail.com** password: **12345678**
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
