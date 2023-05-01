@@ -41,7 +41,7 @@ class CodigoPostalImport implements ToModel, WithHeadingRow, WithBatchInserts, W
     public function rules(): array
     {
         return[
-            '.c_cp' => [
+            '*.c_cp' => [
                 'string',
                 'required'
             ],
