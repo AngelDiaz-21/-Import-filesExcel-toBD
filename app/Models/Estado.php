@@ -12,10 +12,7 @@ class Estado extends Model
 {
     use HasFactory;
 
-    protected $connection = 'claves_sat';
     public $table = "estado";
-    // protected $table = "estado";
-
 
     protected $fillable = [
         'clave_Estado',
@@ -30,5 +27,4 @@ class Estado extends Model
     public function localidad(){
         return $this->hasMany("App\Localidad");
     }
-
 }

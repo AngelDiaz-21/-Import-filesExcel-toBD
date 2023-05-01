@@ -9,9 +9,7 @@ class ClaveUnidad extends Model
 {
     use HasFactory;
 
-    protected $connection = 'claves_sat';
     public $table = "claveUnidad";
-
 
     protected $fillable = [
         'clave_Unidad',
@@ -20,5 +18,4 @@ class ClaveUnidad extends Model
         'nota',
         'simbolo',
     ];
-
 }

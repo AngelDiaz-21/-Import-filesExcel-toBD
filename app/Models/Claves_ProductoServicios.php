@@ -9,9 +9,7 @@ class Claves_ProductoServicios extends Model
 {
     use HasFactory;
 
-    protected $connection = 'claves_sat';
     public $table = "clave_productoservicio";
-
 
     protected $fillable = [
         'clave_productoServicio',

@@ -9,12 +9,9 @@ use App\Models\Estado;
 
 class Municipio extends Model
 {
-    protected $connection = 'claves_sat';
     use HasFactory;
 
     public $table = "municipio";
-
-
 
     protected $fillable = [
         'clave_Municipio',

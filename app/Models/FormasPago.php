@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class FormasPago extends Model
 {
-    protected $connection = 'claves_sat';
     use HasFactory;
 
     public $table = "formasPago";
-
 
     protected $fillable = [
         'clave_formaPago',
@@ -27,6 +25,4 @@ class FormasPago extends Model
         'tipo_cadenaPago',
         'nombre_bancoEmisor_cuentaOrdenante_casoExtranjero'
     ];
-
-
 }

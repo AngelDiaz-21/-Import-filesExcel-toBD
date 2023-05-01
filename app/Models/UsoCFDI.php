@@ -7,12 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsoCFDI extends Model
 {
-    protected $connection = 'claves_sat';
     use HasFactory;
 
     public $table = "cfdi";
-
-
 
     protected $fillable = [
         'clave_usoCFDI',
@@ -21,6 +18,4 @@ class UsoCFDI extends Model
         'tipo_personaMoral',
         'regimen_fiscalReceptor'
     ];
-
-
 }

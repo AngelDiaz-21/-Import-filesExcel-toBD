@@ -4,17 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 use App\Models\Estado;
 
 class Localidad extends Model
 {
-    protected $connection = 'claves_sat';
     use HasFactory;
 
     public $table = "Localidad";
-
-
 
     protected $fillable = [
         'clave_Localidad',

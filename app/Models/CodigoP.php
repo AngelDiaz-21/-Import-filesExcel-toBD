@@ -9,12 +9,9 @@ class CodigoP extends Model
 {
     use HasFactory;
 
-    protected $connection = 'claves_sat';
-    protected $table = "codigo_postal";
-
+    public $table = "codigo_postal";
 
     protected $fillable = [
         'codigoPostal'
     ];
-
 }
