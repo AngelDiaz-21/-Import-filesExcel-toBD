@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateClaveProductoservicioTable extends Migration
 {
-    protected $connection = 'claves_sat';
     /**
      * Run the migrations.
      *

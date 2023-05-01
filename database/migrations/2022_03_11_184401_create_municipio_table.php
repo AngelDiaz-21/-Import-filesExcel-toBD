@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Schema;
 class CreateMunicipioTable extends Migration
 {
 
-    protected $connection = 'claves_sat';
     /**
      * Run the migrations.
      *
